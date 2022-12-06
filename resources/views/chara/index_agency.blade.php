@@ -29,7 +29,7 @@
             <td>{{ $data->agency_name }}</td>
             <td>{{ $data->established }}</td>
             <td>
-                <a href="{{ route('chara.edit_agency',$data->id_agency) }}" type="button" class="btn btn-warning rounded-3">
+                <a href="{{ route('chara.edit_agency',$data->id_agency) }}" type="button" class="btn btn-primary rounded-3">
                     Change
                 </a>
 
@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#softDeleteModal{{ $data->id_agency}}">
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#softDeleteModal{{ $data->id_agency}}">
                         Soft Delete
                     </button>
 

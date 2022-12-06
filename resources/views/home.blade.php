@@ -15,6 +15,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <div>
+                        <a href="{{ route('chara.index_summary') }}" type="button" class="btn btn-primary rounded-3">Move to Home</a>
+                    </div>
                 </div>
             </div>
         </div>

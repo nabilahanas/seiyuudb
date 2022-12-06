@@ -17,23 +17,21 @@ class VAController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_va' => 'required',
             'va_name' => 'required',      
             'birthdate' => 'required',
             'id_agency' => 'required', 
         ]);
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
         DB::insert(
-            'INSERT INTO va(id_va, va_name, birthdate, id_agency) VALUES
-        (:id_va, :va_name, :birthdate, :id_agency)',
+            'INSERT INTO va(va_name, birthdate, id_agency) VALUES
+        (:va_name, :birthdate, :id_agency)',
             [
-                'id_va' => $request->id_va,
                 'va_name' => $request->va_name,
                 'birthdate' => $request->birthdate,
                 'id_agency' => $request->id_agency,
             ]
         );
-        return redirect()->route('chara.index_va')->with('success', 'Data voice actor berhasil disimpan');
+        return redirect()->route('chara.index_va')->with('success', 'Data has been successfully saved');
     }
     public function index()
     {
@@ -49,24 +47,24 @@ class VAController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'id_va' => 'required',
+            // 'id_va' => 'required',
             'va_name' => 'required',      
             'birthdate' => 'required',
             'id_agency' => 'required', 
         ]);
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
         DB::update(
-            'UPDATE va SET id_va = :id_va, va_name = :va_name, birthdate = :birthdate, id_agency = :id_agency
+            'UPDATE va SET va_name = :va_name, birthdate = :birthdate, id_agency = :id_agency
             WHERE id_va = :id',
             [
                 'id' => $id,
-                'id_va' => $request->id_va,
+                // 'id_va' => $request->id_va,
                 'va_name' => $request->va_name,
                 'birthdate' => $request->birthdate,
                 'id_agency' => $request->id_agency,
             ]
         );
-        return redirect()->route('chara.index_va')->with('success', 'Data voice actor berhasil diubah');
+        return redirect()->route('chara.index_va')->with('success', 'Data has been successfully changed');
     }
 
     public function delete($id) {

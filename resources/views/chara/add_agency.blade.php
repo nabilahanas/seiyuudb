@@ -16,13 +16,6 @@
 
         <form method="post" action="{{route('chara.store_agency') }}">
             @csrf
-
-            <div class="mb-3">
-
-                <label for="id_agency" class="form-label">Agency ID</label>
-
-                <input type="text" class="form-control" id="id_agency" name="id_agency">
-            </div>
             <div class="mb-3">
 
                 <label for="agency_name" class="form-label">Agency Name</label>

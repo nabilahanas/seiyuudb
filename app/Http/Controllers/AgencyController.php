@@ -16,21 +16,21 @@ class AgencyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_agency'=> 'required',
+            // 'id_agency'=> 'required',
             'agency_name' => 'required',      
             'established' => 'required', 
         ]);
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
         DB::insert(
-            'INSERT INTO agency(id_agency, agency_name, established) VALUES
-        (:id_agency, :agency_name, :established)',
+            'INSERT INTO agency(agency_name, established) VALUES
+        (:agency_name, :established)',
             [
-                'id_agency' => $request->id_agency,
+                // 'id_agency' => $request->id_agency,
                 'agency_name' => $request->agency_name,
                 'established' => $request->established,
             ]
         );
-        return redirect()->route('chara.index_agency')->with('success', 'Data agency berhasil disimpan');
+        return redirect()->route('chara.index_agency')->with('success', 'Data has been successfully saved');
     }
     public function index()
     {
@@ -46,22 +46,22 @@ class AgencyController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'id_agency' => 'required',
+            // 'id_agency' => 'required',
             'agency_name' => 'required',
             'established' => 'required',
         ]);
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
         DB::update(
-            'UPDATE agency SET id_agency = :id_agency, agency_name = :agency_name, established = :established
+            'UPDATE agency SET agency_name = :agency_name, established = :established
             WHERE id_agency = :id',
             [
                 'id' => $id,
-                'id_agency' => $request->id_agency,
+                // 'id_agency' => $request->id_agency,
                 'agency_name' => $request->agency_name,
                 'established' => $request->established,
             ]
         );
-        return redirect()->route('chara.index_agency')->with('success', 'Data agency berhasil diubah');
+        return redirect()->route('chara.index_agency')->with('success', 'Data has been successfully changed');
     }
 
     public function delete($id) {
@@ -79,7 +79,7 @@ class AgencyController extends Controller
             WHERE id_agency = :id_agency', ['id_agency' => $id]);
             return redirect()->route('chara.index_agency')->with('success', 'Data has been successfully deleted');
         }
-        public function restore()
+    public function restore()
         {
             // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
             DB::table('agency')

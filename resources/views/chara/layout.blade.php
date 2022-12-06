@@ -30,6 +30,7 @@ hlZB6+fzT" crossorigin="anonymous">
             <a class="navbar-brand" href="{{
 route('chara.index')}}">CHARA'S SEIYUU DB
             </a>
+            <a href="/ " type="button" class="btn btn-primary rounded-3">Move to Login</a>
         </div>
     </nav>
     <div class="container">

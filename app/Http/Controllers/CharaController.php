@@ -17,24 +17,24 @@ class CharaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_chara' =>'required',
+            // 'id_chara' =>'required',
             'chara_name' => 'required',      
             'chara_from' => 'required', 
             'id_va' => 'required',
         ]);
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
         DB::insert(
-            'INSERT INTO chara(id_chara, chara_name, alt_name, chara_from, id_va) VALUES
-        (:id_chara, :chara_name, :alt_name, :chara_from, :id_va)',
+            'INSERT INTO chara(chara_name, alt_name, chara_from, id_va) VALUES
+        (:chara_name, :alt_name, :chara_from, :id_va)',
             [
-                'id_chara' => $request->id_chara,
+                // 'id_chara' => $request->id_chara,
                 'chara_name' => $request->chara_name,
                 'alt_name' => $request->alt_name,
                 'chara_from' => $request->chara_from,
                 'id_va' => $request -> id_va,
             ]
         );
-        return redirect()->route('chara.index')->with('success', 'Data character berhasil disimpan');
+        return redirect()->route('chara.index')->with('success', 'Data has been successfully saved');
     }
     public function index()
     {
@@ -50,25 +50,25 @@ class CharaController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'id_chara' =>'required',
+            // 'id_chara' =>'required',
             'chara_name' => 'required',      
             'chara_from' => 'required', 
             'id_va' => 'required',
         ]);
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
         DB::update(
-            'UPDATE chara SET id_chara = :id_chara, chara_name = :chara_name, alt_name = :alt_name, chara_from = :chara_from, id_va = :id_va
+            'UPDATE chara SET chara_name = :chara_name, alt_name = :alt_name, chara_from = :chara_from, id_va = :id_va
             WHERE id_chara = :id',
             [
                 'id' => $id,
-                'id_chara' => $request->id_chara,
+                // 'id_chara' => $request->id_chara,
                 'chara_name' => $request->chara_name,
                 'alt_name' => $request->alt_name,
                 'chara_from' => $request->chara_from,
                 'id_va' => $request -> id_va,
             ]
         );
-        return redirect()->route('chara.index')->with('success', 'Data chara berhasil diubah');
+        return redirect()->route('chara.index')->with('success', 'Data has been successfully changed');
     }
 
     public function delete($id) {
@@ -134,7 +134,8 @@ class CharaController extends Controller
             on va.id_agency = agency.id_agency 
             WHERE chara_name like :search',[
                 'search'=>'%'.$request->search.'%',
-            ]);
+            ]
+        );
 
         return view('chara.index_summary')
             ->with('datas', $datas);

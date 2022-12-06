@@ -9,7 +9,7 @@
     @csrf
     <div class="mb-3">
 
-        <label for="name" class="form-label">Search Name</label>
+        <label for="name" class="form-label">Search Character Name</label>
 
         <input type="text" class="form-control" name="search">
     </div>

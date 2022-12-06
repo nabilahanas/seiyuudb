@@ -31,7 +31,7 @@
             <td>{{ $data->birthdate }}</td>
             <td>{{ $data->id_agency }}</td>
             <td>
-                <a href="{{ route('chara.edit_va',$data->id_va) }}" type="button" class="btn btn-warning rounded-3">
+                <a href="{{ route('chara.edit_va',$data->id_va) }}" type="button" class="btn btn-primary rounded-3">
                     Change
                 </a>
 
@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#softDeleteModal{{ $data->id_va}}">
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#softDeleteModal{{ $data->id_va}}">
                         Soft Delete
                     </button>
 

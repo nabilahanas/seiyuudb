@@ -18,13 +18,6 @@
             @csrf
             <div class="mb-3">
 
-                <label for="id_chara" class="form-label">Character ID</label>
-
-                <input type="text" class="form-control" id="id_chara" name="id_chara" value="{{ $data->id_chara}}">
-            </div>
-
-            <div class="mb-3">
-
                 <label for="chara_name" class="form-label">Character Name</label>
 
                 <input type="text" class="form-control" id="chara_name" name="chara_name" value="{{ $data->chara_name }}">
